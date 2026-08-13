@@ -126,8 +126,7 @@ export default function ApplyPage({ preselectedRole, onBack }) {
       Object.entries(textFields).forEach(([k, v]) => body.append(k, v ?? ""));
 
       // File fields
-      if (form.resume)    body.append("resume", form.resume);
-      if (form.videoBlob) body.append("video",  form.videoBlob, "intro.webm");
+      // Resume/video are intentionally NOT sent to the backend.
 
       const res = await fetch(`${API}/api/applications`, { method: "POST", body });
       const json = await res.json();
